@@ -1,0 +1,12 @@
+<%= stylesheet_link_tag 'home' %>
+
+<div class="main diaries-new">
+  <div class="container">
+    <h1>Editing Diary</h1>
+    
+    <%= render 'form', diary: @diary %>
+    
+    <%= link_to 'Show', @diary %> |
+    <%= link_to 'Back', diaries_path %>
+  </div>
+</div>

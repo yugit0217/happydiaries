@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Diary</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+  </head>
+
+  <body>
+    <header style="top: 0px;">
+  <div class="header-logo">
+    <% if @current_user %>
+          <%= link_to("HappyDiaries", "/") %>
+        <% else %>
+          <%= link_to("HappyDiaries", "/") %>
+        <% end %>
+  </div>
+  <ul class="header-menus">
+    
+    <% if @current_user %>
+      <li>
+        <%= link_to(@current_user.name, "/users/#{@current_user.id}") %>
+      </li>
+      
+      <!--プロフィール入れるとこ-->
+      
+      <li>
+        <%= link_to("日記一覧", "/diaries") %>
+      </li>
+      <li>
+        <%= link_to("日記を書く", "/diaries/new") %>
+      </li>
+      <li>
+        <%= link_to("ログアウト", "/logout", {method: :post}) %>
+      </li>
+      <% else %>
+      <li>
+        <%= link_to("HappyDiariesとは", "/about") %>
+      </li>
+      <li>
+        <%= link_to("新規登録", "/signup") %>
+      </li>
+      <li>
+        <%= link_to("ログイン", "/login") %>
+      </li>
+      <% end %>
+  </ul>
+</header>
+
+ <% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    
+    <%= yield %>
+  </body>
+</html>

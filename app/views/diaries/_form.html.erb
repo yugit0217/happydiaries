@@ -1,0 +1,28 @@
+<%= form_with(model: diary, local: true) do |form| %>
+  <% if diary.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(diary.errors.count, "error") %> prohibited this diary from being saved:</h2>
+
+      <ul>
+      <% diary.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :タイトル %>
+    <%= form.text_field :title, id: :diary_title %>
+    
+  </div>
+
+  <div class="field">
+    <%= form.label :本文 %>
+    <%= form.text_area :body, id: :diary_body, :size => "55x25" %>
+  </div>
+
+  <div class="btn btn-outline-primary btn-sm">
+    <%= form.submit :Doit! %>
+  </div>
+<% end %>

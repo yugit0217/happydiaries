@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+
+
+<div class="diaries-main">
+<h1>日記一覧画面</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>タイトル</th>
+      <th>日付</th>
+      <th>更新日</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @diaries.each do |diary| %>
+      <tr>
+        <td></td>
+        <td><%= link_to diary.title, diary %></td>
+        <td><%= diary.created_at %></td>
+        <td><%= diary.updated_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
+<br>
+<div class="diaries-btn">
+<%= link_to '日記を新規作成', new_diary_path %>
+</div>
+<%= will_paginate @diaries, class: "pagination justify-content-center mt-3", 
+                            previous_label: '&lt 前へ', next_label: '次へ &gt' %>
+</div>

@@ -1,0 +1,42 @@
+<%= stylesheet_link_tag 'home' %>
+
+
+<div class="main diaries-show">
+  <div class="container">
+    <div class="diaries-show-item">
+      <div class="diary-user-name">
+        
+        <!-- link_toメソッドを用いて、ユーザー詳細ページへのリンクを作成してください -->
+        <%= link_to(@user.name,"/users/#{@user.id}")%>
+      </div>
+  
+    <p>
+      <strong>タイトル:</strong>
+      <%= @diary.title %>
+    </p>
+  
+    <p>
+      <strong>本文:</strong>
+      <%= @diary.body %>
+    </p>
+  
+    <p>
+      <strong>日付:</strong>
+      <%= @diary.created_at %>
+    </p>
+    
+    <p>
+      <strong>更新日:</strong>
+      <%= @diary.updated_at %>
+    </p>
+    <% if @diary.user_id == @current_user.id %>
+      <div class="diary-menus">
+        <%= link_to '編集', edit_diary_path(@diary) %> |
+        <%= link_to '削除', @diary, method: :delete, data: { confirm: '本当に削除しますか？' } %> |
+      </div>
+    <% end %>
+        <%= link_to '一覧に戻る', diaries_path %>
+    
+    </div>
+  </div>
+</div>
